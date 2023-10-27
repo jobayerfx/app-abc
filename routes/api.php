@@ -3,6 +3,7 @@
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserRoleController;
+use App\Http\Controllers\RiderLocationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -33,5 +34,5 @@ Route::apiResource('roles', RoleController::class)->except(['create', 'edit'])->
 Route::apiResource('users.roles', UserRoleController::class)->except(['create', 'edit', 'show', 'update'])->middleware(['auth:sanctum', 'ability:admin,super-admin']);
 
 
-Route::post('rider-locations', 'RiderLocationController@store');
-Route::get('restaurant/{restaurantId}/nearby-riders', 'RiderLocationController@findNearbyRiders');
+Route::post('rider-locations', [RiderLocationController::class,'store']);
+Route::get('restaurant/{restaurantId}/nearby-riders', [RiderLocationController::class, 'findNearbyRiders']);

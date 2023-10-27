@@ -20,20 +20,18 @@ class RestaurantTableSeeder extends Seeder
         DB::table('rider_locations')->truncate();
         Schema::enableForeignKeyConstraints();
 
-        Restaurant::create([
+        Restaurant::insert([
             [
-                'user_id' => 2,
+                'user_id' => 1,
                 'name' => 'XYZ Food Plaza',
                 'lat' => 25.744860,
                 'long' => 89.275589,
-                'capture_time' => now(),
             ],
             [
-                'user_id	' => 3,
+                'user_id	' => 2,
                 'name' => 'ABC Food Plaza',
                 'lat' => 22.341900,
                 'long' => 91.815536,
-                'capture_time' => now(),
             ],
         ]);
     }

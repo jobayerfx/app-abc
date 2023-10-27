@@ -33,9 +33,10 @@ class RiderLocationController extends Controller
     public function findNearbyRiders(Request $request, $restaurantId)
     {
         $restaurant = Restaurant::query()->where('id', $restaurantId)->first();
-        if ($restaurant) {
+        if (!$restaurant) {
             return response(['error' => 1, 'message' => 'The Restaurant does n\'t exists.'], 404);
         }
+
         $lat = $restaurant->lat;
         $lng = $restaurant->long;
         $distance = 5; // For 5 Kilometers.
